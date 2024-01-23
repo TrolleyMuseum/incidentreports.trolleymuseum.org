@@ -1,0 +1,104 @@
+---
+layout: page
+title: Report
+permalink: /report/
+exclude: true
+---
+
+<style type="text/css">
+  div#report { border:1px #cccccc solid; padding:10px;}
+  span#loading-report-id { font-weight:bold; color:red; font-family: monospace;}
+  #report-row { border:1px red solid; color:darkRed; padding:5px; margin:5px; }
+  #report-row h3  { padding:5px; margin:5px; color:#292929; }
+  #report-row div { padding:5px; margin:5px; color:darkRed; }
+</style>
+
+<div id="report">
+  <div id="loading-report"><center><img src="/loading.gif" /><p>&nbsp;</p>Loading Report <span id="loading-report-id"></span></center></div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script>
+
+function getAnchor() {
+  var currentUrl = document.URL;
+  var urlParts   = currentUrl.split('#');
+
+  return (urlParts.length > 1) ? urlParts[1] : null;
+}
+
+function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
+}
+
+
+  $(document).ready(function(){
+    const formURL = 'https://y9lpwjzcya.execute-api.us-east-1.amazonaws.com/prod/report';
+
+    const reportId = getAnchor();
+    console.log("Loading report: ["+reportId+"]");
+    $("#loading-report-id").html(reportId);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", formURL, true);
+    xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    xhr.send(JSON.stringify({"report-id": reportId}));
+
+    xhr.onloadend = response => {
+      if ((response.target.status > 199) && (response.target.status < 300)) {
+        $("#report").html("<strong>Report ID:</strong> "+reportId);
+        $("#report").append("");
+        console.log("Response:",response.target.status,response.target.response);
+
+        // {
+        //   "report": [
+        //     {
+        //       "date-report-written": "2024-01-22T02:32:12.540Z",
+        //       "everything-is-true": "on",
+        //       "first-name": "Alexander",
+        //       "last-name": "Hamilton",
+        //       "created": "2024-01-22T17:24:10.596784",
+        //       "report-id": "0e23a749-b94b-11ee-af14-b3389e7c833d",
+        //       "email": "devon+hamilton@hubner.org",
+        //       "name": "Alexander Hamilton",
+        //       "time-of-incident": "21:32",
+        //       "date-of-incident": "2024-01-21",
+        //       "phone": "207-867-5309",
+        //       "weather-conditions": "Sun",
+        //       "cars-involved": "303,1160"
+        //     }
+        //   ]
+        // }
+        let data = JSON.parse(response.target.response);
+        data.report.forEach(function(row) {
+          Object.keys(row).forEach(function(key) {
+            var lin = "<div id=\"report-row\"><h3>"+toTitleCase(key.replaceAll("-", " "))+"</h3><div>"+row[key]+"</div></div>";
+            console.log(lin);
+            $("#report").append(lin);
+          });
+        }); /* rows */
+
+
+
+
+      } else {
+        $("#report").html('<strong>Error!</strong><p />Unable to retrieve Report');
+        console.log("ERROR Response:",response.target.status,response.target.response);
+      }
+    } /* xhr.onloadend */
+    /* ******************************** */
+
+  }); /* document ready */
+
+</script>

@@ -1,0 +1,26 @@
+*.swp
+package-lock.json
+__pycache__
+.pytest_cache
+.venv
+*.egg-info
+*_share
+.DS_Store
+_site
+*_share
+*.zip
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+checkov.out
+functions/create_test_users_share
+getuser_results.json
+initiateauth_results.json
+functions/PreTokenGeneration/c.py
+functions/PreTokenGeneration/i.py
+*.1.py
+*1.py
+*2.py
+exports.json
+*.1

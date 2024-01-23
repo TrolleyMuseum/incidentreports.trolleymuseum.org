@@ -1,0 +1,483 @@
+---
+layout: page
+title: Reports
+permalink: /reports/
+---
+
+<style type="text/css">
+  div#reports { border:1px #cccccc solid; padding:10px;}
+  div.charts { float:left; }
+  div.charts div { float:left; width:400px; border:4px green solid; }
+</style>
+
+<div id="reports"><center><img src="/loading.gif" /><br />Please Wait</center></div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+  $(document).ready(function(){
+    const formURL = 'https://y9lpwjzcya.execute-api.us-east-1.amazonaws.com/prod/reports';
+    $.get(formURL, function(data, status){
+      console.log("Status:",status);
+      console.log("Data:",data);
+      //console.log("rows..............:",data.rows);
+      //console.log("cars..............:",data.cars);
+      //console.log("operators.........:",data.operators);
+      //console.log("weather...........:",data.weather);
+      //console.log("cars_by_operator..:",data.cars_by_operator);
+      //console.log("operators_by_car..:",data.operators_by_car);
+      //console.log("incidents_by_dates:",data.incidents_by_dates);
+
+
+
+      $("#reports").html("");
+      /* ******************************************** */
+      /* ****            ALL Reports             **** */
+      /* ******************************************** */
+      $("#reports").append("<h2>ALL Reports</h2><table id=\"all-reports\"><tr><th>ID</th><th>Date of Incident</th><th>Operator</th><th>Weather Conditions</th><th>Cars Involved</th></tr></table>");
+      data.rows.forEach(function(row) {
+        var lin = "<tr><td><small><a href=\"/report/#"+row["report-id"]+"\">"+row["report-id"]+"</a></small></td><td>"+row["date-of-incident"]+"</td><td>"+row["name"]+"</td><td>"+row["weather-conditions"]+"</td><td>"+row["cars-involved"]+"</td></tr>";
+        console.log(lin);
+        $("#all-reports").append(lin);
+      }); /* rows */
+
+
+      /* ******************************************** */
+      /* ****         Incidents by Date          **** */
+      /* ******************************************** */
+      $("#reports").append("<h2>Incidents by Date</h2>");
+      $("#reports").append("<table><tr><td><canvas id=\"date-chart-bar\"></canvas></td><td><canvas id=\"date-chart-pie\"></canvas></td></tr></table>");
+      $("#reports").append("<table id=\"incidents-by-date\"><tr><th>Date</th><th>Incident Count</th></tr></table>");
+
+      var date_incident_count = [];
+      var incidents_by_dates_keys = Object.keys(data.incidents_by_dates);
+      incidents_by_dates_keys.sort();
+      incidents_by_dates_keys.forEach(function(incidents_by_date) {
+        console.log("incidents_by_date:",incidents_by_date);
+        var incidentCount = data.incidents_by_dates[incidents_by_date];
+        date_incident_count.push(incidentCount);
+        var lin = "<tr><td>"+incidents_by_date+"</td><td>"+incidentCount+"</td></tr>";
+        $("#incidents-by-date").append(lin);
+      }); /* date */
+
+
+      const date_chart_pie = document.getElementById('date-chart-pie');
+      new Chart(date_chart_pie, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(data.incidents_by_dates),
+          datasets: [{
+            //label: 'incidents',
+            data: date_incident_count,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const date_chart_bar = document.getElementById('date-chart-bar');
+      new Chart(date_chart_bar, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(data.incidents_by_dates),
+          datasets: [{
+            label: 'incidents',
+            data: date_incident_count,
+            borderWidth: 1,
+            backgroundColor: ["red", "green", "blue", "yellow", "cyan", "magenta", "orange", "purple"],
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+
+
+
+
+      /* ******************************************** */
+      /* ****            Cars                    **** */
+      /* ******************************************** */
+      $("#reports").append("<h2>Cars</h2>")
+      $("#reports").append("<table><tr><td><canvas id=\"car-chart-bar\"></canvas></td><td><canvas id=\"car-chart-pie\"></canvas></td></tr></table>");
+      $("#reports").append("<table id=\"cars\"><tr><th>Car</th><th>Incident Dates</th><th>Incident Count</th></tr></table>");
+
+      var car_incident_count = [];
+      Object.keys(data.cars).forEach(function(car) {
+        console.log("car:",car);
+        var dates = data.cars[car].join(",");
+        var incidentCount = data.cars[car].length;
+        car_incident_count.push(incidentCount);
+        var lin = "<tr><td>"+car+"</td><td>"+dates+"</td><td>"+incidentCount+"</td></tr>";
+        //console.log(lin);
+        $("#cars").append(lin);
+      }); /* rows */
+
+      const car_chart_pie = document.getElementById('car-chart-pie');
+      new Chart(car_chart_pie, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(data.cars),
+          datasets: [{
+            //label: 'incidents',
+            data: car_incident_count,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const car_chart_bar = document.getElementById('car-chart-bar');
+      new Chart(car_chart_bar, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(data.cars),
+          datasets: [{
+            label: 'incidents',
+            data: car_incident_count,
+            borderWidth: 1,
+            backgroundColor: ["red", "green", "blue", "yellow", "cyan", "magenta", "orange", "purple"],
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+
+      /* ******************************************** */
+      /* ****            Operators               **** */
+      /* ******************************************** */
+      $("#reports").append("<h2>Operators</h2>");
+      $("#reports").append("<div><small><em>Operator names have been <a href=\"https://en.wikipedia.org/wiki/Pseudonymization\">pseudonymized</a> to ensure accurate reporting numbers, but without exposing individual information.</em></small></div>");
+      $("#reports").append("<table><tr><td><canvas id=\"operators-chart-bar\"></canvas></td><td><canvas id=\"operators-chart-pie\"></canvas></td></tr></table>");
+      $("#reports").append("<table id=\"operators\"><tr><th>Operator</th><th>Incident Dates</th><th>Incident Count</th></tr></table>");
+
+      var operator_incident_count = [];
+      Object.keys(data.operators).forEach(function(operator) {
+        console.log("operator:",operator);
+        var dates = data.operators[operator].join(",");
+        var incidentCount = data.operators[operator].length;
+        operator_incident_count.push(incidentCount);
+        var lin = "<tr><td>"+operator+"</td><td>"+dates+"</td><td>"+incidentCount+"</td></tr>";
+        //console.log(lin);
+        $("#operators").append(lin);
+      }); /* operators */
+
+
+
+      const operator_chart_pie = document.getElementById('operators-chart-pie');
+      new Chart(operator_chart_pie, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(data.operators),
+          datasets: [{
+            //label: 'incidents',
+            data: operator_incident_count,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const operator_chart_bar = document.getElementById('operators-chart-bar');
+      new Chart(operator_chart_bar, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(data.operators),
+          datasets: [{
+            label: 'incidents',
+            data: operator_incident_count,
+            borderWidth: 1,
+            backgroundColor: ["red", "green", "blue", "yellow", "cyan", "magenta", "orange", "purple"],
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+
+
+
+
+
+
+
+
+
+
+      /* ******************************************** */
+      /* ****            Weather                 **** */
+      /* ******************************************** */
+      $("#reports").append("<h2>Weather</h2>");
+      $("#reports").append("<table><tr><td><canvas id=\"weather-chart-bar\"></canvas></td><td><canvas id=\"weather-chart-pie\"></canvas></td></tr></table>");
+      $("#reports").append("<table id=\"weather\"><tr><th>Operator</th><th>Incident Dates</th><th>Incident Count</th></tr></table>");
+
+      var weather_incident_count = [];
+      Object.keys(data.weather).forEach(function(weather) {
+        console.log("weather:",weather);
+        var dates = data.weather[weather].join(",");
+        var incidentCount = data.weather[weather].length;
+        weather_incident_count.push(incidentCount);
+        var lin = "<tr><td>"+weather+"</td><td>"+dates+"</td><td>"+incidentCount+"</td></tr>";
+        //console.log(lin);
+        $("#weather").append(lin);
+      }); /* weather */
+
+
+      const weather_chart_pie = document.getElementById('weather-chart-pie');
+      new Chart(weather_chart_pie, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(data.weather),
+          datasets: [{
+            //label: 'incidents',
+            data: weather_incident_count,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const weather_chart_bar = document.getElementById('weather-chart-bar');
+      new Chart(weather_chart_bar, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(data.weather),
+          datasets: [{
+            label: 'incidents',
+            data: weather_incident_count,
+            borderWidth: 1,
+            backgroundColor: ["red", "green", "blue", "yellow", "cyan", "magenta", "orange", "purple"],
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+
+
+
+
+
+
+      /* ******************************************** */
+      /* ****         Cars by Operator           **** */
+      /* ******************************************** */
+      $("#reports").append("<h2>Cars by Operator</h2>");
+      //$("#reports").append("<table><tr><td><canvas id=\"cars-by-operator-chart-bar\"></canvas></td><td><canvas id=\"cars-by-operator-chart-pie\"></canvas></td></tr></table>");
+      $("#reports").append("<table id=\"cars-by-operator\"><tr><th>Operator</th><th>Cars</th><th>Incident Count</th></tr></table>");
+
+      //var cars_by_operator_incident_count = [];
+      Object.keys(data.cars_by_operator).forEach(function(operator) {
+        console.log("car-by-operator:",operator);
+        var cars = data.cars_by_operator[operator].join(",");
+        var incidentCount = data.cars_by_operator[operator].length;
+        //cars_by_operator_incident_count.push(incidentCount);
+        var lin = "<tr><td>"+operator+"</td><td>"+cars+"</td><td>"+incidentCount+"</td></tr>";
+        $("#cars-by-operator").append(lin);
+      }); /* cars-by-operator */
+
+
+/*
+      const cars_by_operator_chart_pie = document.getElementById('cars-by-operator-chart-pie');
+      new Chart(cars_by_operator_chart_pie, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(data.cars_by_operator),
+          datasets: [{
+            //label: 'incidents',
+            data: cars_by_operator_incident_count,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const cars_by_operator_chart_bar = document.getElementById('cars-by-operator-chart-bar');
+      new Chart(cars_by_operator_chart_bar, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(data.cars_by_operator),
+          datasets: [{
+            label: 'incidents',
+            data: cars_by_operator_incident_count,
+            borderWidth: 1,
+            backgroundColor: ["red", "green", "blue", "yellow", "cyan", "magenta", "orange", "purple"],
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+*/
+
+
+
+
+
+
+
+      /* ******************************************** */
+      /* ****         Operator by Cars           **** */
+      /* ******************************************** */
+      $("#reports").append("<h2>Operator by Cars</h2>");
+      //$("#reports").append("<table><tr><td><canvas id=\"operator-by-car-chart-bar\"></canvas></td><td><canvas id=\"operator-by-car-chart-pie\"></canvas></td></tr></table>");
+      $("#reports").append("<table id=\"operator-by-cars\"><tr><th>Car</th><th>Operators</th><th>Incident Count</th></tr></table>");
+
+      //var operator_by_car_incident_count = [];
+      Object.keys(data.operators_by_car).forEach(function(car) {
+        console.log("operator-by-car:",car);
+        var operators = data.operators_by_car[car].join(",");
+        var incidentCount = data.operators_by_car[car].length;
+        //operator_by_car_incident_count.push(incidentCount);
+        var lin = "<tr><td>"+car+"</td><td>"+operators+"</td><td>"+incidentCount+"</td></tr>";
+        $("#operator-by-cars").append(lin);
+      }); /* operator-by-car */
+
+/*
+      const operator_by_car_chart_pie = document.getElementById('operator-by-car-chart-pie');
+      new Chart(operator_by_car_chart_pie, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(data.operator_by_car),
+          datasets: [{
+            //label: 'incidents',
+            data: operator_by_car_incident_count,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const operator_by_car_chart_bar = document.getElementById('operator-by-car-chart-bar');
+      new Chart(operator_by_car_chart_bar, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(data.operator_by_car),
+          datasets: [{
+            label: 'incidents',
+            data: operator_by_car_incident_count,
+            borderWidth: 1,
+            backgroundColor: ["red", "green", "blue", "yellow", "cyan", "magenta", "orange", "purple"],
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+*/
+
+
+
+
+        
+    }); /* get */
+  }); /* document ready */
+
+</script>

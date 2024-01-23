@@ -1,0 +1,370 @@
+title: Incident Reports
+email: safety@trolleymuseum.org
+description: "Incident Reports"
+baseurl: ""
+url: ""
+
+theme: minima
+
+
+weather_conditions:
+  "Sun": "☀️"
+  "Cloud": "☁️"
+  "Foggy": "🌁"
+  "Cloud with Snow": "🌨️"
+  "Cloud with Lightning and Rain": "⛈️"
+  "Cloud with Lightning": "🌩️"
+  "Cloud with Rain": "🌧️"
+  "Sun Behind Cloud": "⛅"
+  "Sun Behind Small Cloud": "🌤️"
+  "Sun Behind Large Cloud": "🌥️"
+  "Ice": "❄️"
+  "Wet": "💧"
+  "Sun Behind Rain Cloud": "🌦️"
+  "Tornado": "🌪️"
+  "Full Moon": "🌕"
+  "Crescent Moon": "🌙"
+  "New Moon": "🌑"
+  "Wind": "🌬️"
+  "Fallen Leaves": "🍂"
+
+operators:
+  - lastname: Alexander
+    firstname: Gerry
+    email: gerardalexander500@gmail.com
+    phone: 
+
+  - lastname: Allen
+    firstname: Duncan
+    email: d2allen@ibigroup.com
+    phone: 781-444-3271
+
+  - lastname: Ames
+    firstname: Stan
+    email: stanamesjr@gmail.com
+    phone: 
+
+  - lastname: Aronovitch
+    firstname: Chuck
+    email: caronovitch@gmail.com
+    phone: 
+
+  - lastname: Bennett
+    firstname: Jeff
+    email: octr202@gmail.com
+    phone: 978-760-4357
+
+  - lastname: Bourgault
+    firstname: Kyle
+    email: kylr23@yahoo.com
+    phone: 
+
+  - lastname: Brosseau
+    firstname: Bob
+    email: bbrosseau@comcast.net
+    phone: 
+
+  - lastname: Cappers
+    firstname: Steve
+    email: scappers@aol.com
+    phone: 207-283-3689
+
+  - lastname: Carrier Sr.
+    firstname: Doug
+    email: mthaynes1@comcast.net
+    phone: 
+
+  - lastname: Carter
+    firstname: Derek
+    email: mthaynes1@comcast.net
+    phone: 
+
+  - lastname: Castendyk
+    firstname: Cullen
+    email: castenbrau@yahoo.com
+    phone: 
+
+  - lastname: Coots
+    firstname: Richard
+    email: cootsr@gmail.com
+    phone: 
+
+  - lastname: Cosgro
+    firstname: Matt
+    email: matt.cosgro@comcast.net
+    phone: 603-882-9240
+
+  - lastname: Cosgro
+    firstname: Rich
+    email: rcosgro@comcast.net
+    phone: 603-882-9240
+
+  - lastname: Crawford
+    firstname: Bill
+    email: crawfordwm@verizon.net
+    phone: 781-581-0411
+
+  - lastname: Curry
+    firstname: Mike
+    email: mtcurry1786@yahoo.com
+    phone: 207-646-2633
+
+  - lastname: Dandridge
+    firstname: Jon
+    email: jonathandandridge3@gmail.com
+    phone: 
+
+  - lastname: delaVega
+    firstname: Mike
+    email: scot151@me.com
+    phone: 617-480-2625
+
+  - lastname: Dresner
+    firstname: Lew
+    email: video84@aol.com
+    phone: 516-564-4746
+
+  - lastname: Drye
+    firstname: Rob
+    email: robert.c.drye@hitchcock.org
+    phone: 603-675-9159
+
+  - lastname: Engler
+    firstname: Eric
+    email: eengler.music@gmail.com
+    phone: 
+
+  - lastname: Frost
+    firstname: Mike
+    email: frosty2412@gmail.com
+    phone: 
+
+  - lastname: Gabriel
+    firstname: Chester
+    email: opencar31@yahoo.com
+    phone: 
+
+  - lastname: Gingell
+    firstname: Rob
+    email: ais_gill@yahoo.com
+    phone: 828-488-6970
+
+  - lastname: Glickman
+    firstname: Todd
+    email: radio88@radio88.net
+    phone: 781-229-8810
+
+  - lastname: Grady
+    firstname: John
+    email: mta53@comcast.net
+    phone: 
+
+  - lastname: Griffith
+    firstname: Charles
+    email: mta53@comcast.net
+    phone: 
+
+  - lastname: Harrje
+    firstname: Gail
+    email: gailharrje@comcast.net
+    phone: 
+
+  - lastname: Haskell
+    firstname: Peter
+    email: STM694@roadrunner.com
+    phone: 
+
+  - lastname: Hessler
+    firstname: Fred
+    email: fhessler@cheerful.com
+    phone: 
+
+  - lastname: Hooper
+    firstname: Scott
+    email: STM694@roadrunner.com
+    phone: 
+
+  - lastname: Hubner
+    firstname: Devon
+    email: devon@hubner.org
+    phone: 603-313-6916
+
+  - lastname: Jayne
+    firstname: Allan
+    email: ajaynejr@aol.com
+    phone: 
+
+  - lastname: Kirkpatrick
+    firstname: Dana
+    email: dakirkp146@verizon.net
+    phone: 
+
+  - lastname: Koellmer
+    firstname: Jeff
+    email: jckoellmer@gmail.com
+    phone: 
+
+  - lastname: Kornechuk
+    firstname: Dave
+    email: dcjakornechuk@gmail.com
+    phone: 
+
+  - lastname: Lane
+    firstname: Richard
+    email: rlane3803@aol.com
+    phone: 
+
+  - lastname: LaRoche
+    firstname: Denise
+    email: denisemlaroche@gmail.com
+    phone: 
+
+  - lastname: LaRoche
+    firstname: Tom
+    email: Tom.LaRoche@protonmail.com
+    phone: 
+
+  - lastname: Mallory
+    firstname: Bill
+    email: MalloryBill117@gmail.com
+    phone: 
+
+  - lastname: Marnik
+    firstname: Bill
+    email: billmarnik@yahoo.com
+    phone: 
+
+  - lastname: McGinley
+    firstname: Terry
+    email: mcginley94@roadrunner.com
+    phone: 
+
+  - lastname: McMahon
+    firstname: Jay
+    email: meraconductor@gmail.com
+    phone: 
+
+  - lastname: Mercurio
+    firstname: John
+    email: johnmercurio59@yahoo.com
+    phone: 
+
+  - lastname: Miller
+    firstname: Chelsea
+    email: bizchelsea@gmail.com
+    phone: 
+
+  - lastname: Miner
+    firstname: Jon
+    email: cp_n18@yahoo.com
+    phone: 
+
+  - lastname: Nawrocki
+    firstname: Jim
+    email: jim.ruth77@gmail.com
+    phone: 
+
+  - lastname: Newton
+    firstname: Dave
+    email: donewton959@gmail.com
+    phone: 207-590-1154
+
+  - lastname: Pascucci
+    firstname: Rich
+    email: rail.instructor@gmail.com
+    phone: 781-608-2314
+
+  - lastname: Perkins
+    firstname: Bob
+    email: bobbyjperkins31@gmail.com
+    phone: 413-525-8419
+
+  - lastname: Perkins
+    firstname: Donna
+    email: donnaperkins15@gmail.com
+    phone: 
+
+  - lastname: Rees
+    firstname: Bill
+    email: billrees18@gmail.com
+    phone: 603-232-7793
+
+  - lastname: Rogers
+    firstname: Dave
+    email: restoration@trolleymuseum.org
+    phone: 603-424-1053
+
+  - lastname: Ruddell
+    firstname: Ron
+    email: londonbridgetoys@verizon.net
+    phone: 
+
+  - lastname: Schantz
+    firstname: Jim
+    email: jschantz@verizon.net
+    phone: 
+
+  - lastname: Speer
+    firstname: Tim
+    email: napiform@gmail.com
+    phone: 
+
+  - lastname: Stephenson
+    firstname: Don
+    email: beeblebrox2@verizon.net
+    phone: 
+
+  - lastname: Sylvester
+    firstname: Mark
+    email: stmtrolleyguy@yahoo.com
+    phone: 781-439-5199
+
+  - lastname: Sylvester
+    firstname: Paul
+    email: sylvesp@yahoo.com
+    phone: 781-944-2561
+
+  - lastname: Taylor
+    firstname: Keith
+    email: iblskeith@roadrunner.com
+    phone: 
+
+  - lastname: Tenaglia
+    firstname: Brian
+    email: fleet@trolleymuseum.org
+    phone: 978-777-0669
+
+  - lastname: Tsihlis
+    firstname: Phil
+    email: philjt@townisp.com
+    phone: 508-667-3358
+
+  - lastname: Tucker
+    firstname: Tom
+    email: twtjlt98@aol.com
+    phone: 978-688-1678
+
+  - lastname: vanBokkelen
+    firstname: James
+    email: jbvb@jbvb.us
+    phone: 
+
+  - lastname: Vardaro
+    firstname: Dan
+    email: danvardaro10@gmail.com
+    phone: 
+
+  - lastname: Whiteman
+    firstname: Jeremy
+    email: jeremy@jeremywhiteman.com
+    phone: 
+
+  - lastname: Wilson
+    firstname: Peter
+    email: peterwilson@comcast.com
+    phone: 
+
+  - lastname: Wolf
+    firstname: Rick
+    email: jrwolf@roadrunner.com
+    phone: 207-967-3606

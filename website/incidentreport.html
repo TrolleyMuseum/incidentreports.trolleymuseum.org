@@ -1,0 +1,546 @@
+---
+layout: page
+title: Incident Report
+permalink: /incidentreport/
+---
+
+<style type="text/css">
+
+  input#devon {
+    width:100px;
+    height:50px;
+    border:4px #dddddd solid;
+    background-color:#efefef;
+    color:#dddddd;
+    font-weight:bold;
+    margin-left:15px;
+    cursor: pointer;
+  }
+
+  input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+  }
+
+  div.form-group {
+    padding:5px;
+    margin:5px;
+  }
+  #were-first-responders-called-group {
+    border:1px red solid;
+  }
+  #who-were-the-first-responders-group {
+    border:1px red solid;
+    background-color:salmon;
+  }
+  #operators-group {
+    border:1px blue solid;
+    background-color:lightBlue;
+  }
+  #everything-is-true {
+    width:50px;
+    height:50px;
+    border:4px darkBlue solid !important;
+    style="float:left;
+    margin-right:10px;"
+  }
+
+  button#submit-button {
+    width:100px;
+    height:50px;
+    border:4px darkGrey solid;
+    background-color:lightGrey;
+    color:#darkGrey;
+    font-weight:bold;
+    margin-left:15px;
+    cursor: pointer;
+  }
+
+  button#submit-button:enabled {
+    border:4px darkRed solid;
+    background-color:lightSalmon;
+    color:#darkRed;
+  }
+
+  #submit-button:hover:enabled {
+    background-color:darkRed;
+    color:#ffffff;
+    border:4px salmon solid;
+  }
+
+  #first-name,
+  #last-name,
+  #name,
+  #date-report-written,
+  #cars-involved-summary,
+  #weather-conditions-summary {
+    background-color:#efefef;
+    color:#333333;
+  }
+
+  #cars-involved {
+    border:1px darkGreen solid;
+    background-color:lightGreen;
+  }
+
+  #weather-group {
+    border:1px lightBlue solid;
+  }
+
+  #fleet-cars-involved-label, #nonfleet-cars-involved-label {
+    font-weight: bold;
+  }
+
+</style>
+
+<form id="incident-report" action="" method="POST">
+
+  <div class="form-group" id="operators-group">
+    <label style="float:left;margin:10px;" for="operators"><strong>Your Name</strong></label>
+    <select class="form-control" style="float:left;margin:10px;" id="operators" name="operators">
+      <option selected value=""></option>
+      {% for operator in site.operators %}
+        <option value="{{ operator['firstname'] }}|{{ operator['lastname'] }}|{{ operator['email'] }}|{{ operator['phone'] }}">{{ operator["lastname"] }}, {{ operator["firstname"] }}</option>
+      {% endfor %}
+    </select>
+    <label for="operators" style="color:darkBlue; font-size:10pt;"><em>Find your name, it will automatically populate fields in grey below.<br />If your name is missing, contact <a href="mailto:safety@trolleymuseum.org">safety@trolleymuseum.org</a></em></label>
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="first-name">Your First Name</label>
+    <input type="text" class="form-control" id="first-name" name="first-name" readonly="readonly" placeholder="" />
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="last-name">Your Last Name</label>
+    <input type="text" class="form-control" id="last-name" name="last-name" readonly="readonly" placeholder="" />
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="name">Your Full Name</label>
+    <input type="text" class="form-control" id="name" name="name" readonly="readonly" placeholder="" />
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="phone">Your Phone Number:</label>
+    <input type="text" class="form-control" id="phone" name="phone" placeholder="" />
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="email">Your Email Address:</label>
+    <input type="text" class="form-control" id="email" name="email" placeholder="" />
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="date-report-written">Date & Time Report Written:</label>
+    <input type="text" class="form-control" id="date-report-written" name="date-report-written" readonly="readonly" placeholder="" />
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="date-of-incident"><strong>Date of Incident:</strong></label>
+    <!-- input type="text" class="form-control" id="date-of-incident" placeholder="" / -->
+    <input type="date" data-date-inline-picker="true" class="form-control" id="date-of-incident" name="date-of-incident" placeholder="" />
+  </div>
+
+  <div class="form-group">
+    <label class="mandatory" for="date-of-incident"><strong>Time of Incident:</strong></label>
+    <!-- input type="text" class="form-control" id="date-of-incident" placeholder="" / -->
+    <input type="time" data-date-inline-picker="true" class="form-control" id="time-of-incident" name="time-of-incident" placeholder="" />
+  </div>
+
+  <div class="form-group" id="were-first-responders-called-group">
+    <label for="were-first-responders-called"><strong>Were First Responders Called?</strong></label>
+    <select id="were-first-responders-called" name="were-first-responders-called">
+      <option selected value="no">no</option>
+      <option value="yes">yes</option>
+    </select>
+
+    <div class="form-group" id="who-were-the-first-responders-group" style="display:none;">
+      <label for="were-first-responders-called"><strong>Who were the first responders?</strong></label>
+      <!-- input type="text" class="form-control" id="were-first-responders-called" placeholder="" / -->
+      <br />
+      <textarea class="form-control" id="were-first-responders-called" name="were-first-responders-called" cols="80" rows="12"></textarea>
+    </div>
+
+  </div>
+
+  <div class="form-group" id="cars-involved">
+    <label id="fleet-cars-involved-label" for="fleet-cars-involved">Fleet Cars Involved:</label>
+    <br />
+    <ul id="fleet-cars-involved" name="fleet-cars-involved">
+      <li>
+        <input type="checkbox" id="1160" name="1160" value="1160" />
+        <label for="1160">CT 1160</label>
+      </li>
+      <li>
+        <input type="checkbox" id="303" name="303" value="303" />
+        <label for="303">CT 303</label>
+      </li>
+      <li>
+        <input type="checkbox" id="38" name="38" value="38" />
+        <label for="38">Nashua 38</label>
+      </li>
+      <li>
+        <input type="checkbox" id="4387" name="4387" value="4387" />
+        <label for="4387">Boston 4387</label>
+      </li>
+      <li>
+        <input type="checkbox" id="5821" name="5821" value="5821" />
+        <label for="5821">Boston 5821</label>
+      </li>
+      <li>
+        <input type="checkbox" id="639" name="639" value="639" />
+        <label for="639">WV 639</label>
+      </li>
+      <li>
+        <input type="checkbox" id="CityOfManchester" name="CityOfManchester" value="CityOfManchester" />
+        <label for="CityOfManchester">City Of Manchester</label>
+      </li>
+    </ul>
+    <br />
+
+    <label id="nonfleet-cars-involved-label" for="nonfleet-cars-involved">Non-Fleet Cars Involved:</label>
+    <br />
+    <ul id="nonfleet-cars-involved" name="nonfleet-cars-involved">
+      <li>
+        <input type="checkbox" id="4" name="4" value="4" />
+        <label for="4">Line Car 4</label>
+      </li>
+      <li>
+        <input type="checkbox" id="5106" name="5106" value="5106" />
+        <label for="5106">Snow Plow 5106</label>
+      </li>
+      <li>
+        <input type="checkbox" id="300" name="300" value="300" />
+        <label for="300">Locomotive 300</label>
+      </li>
+      <li>
+        <input type="checkbox" id="2890" name="2890" value="2890" />
+        <label for="2890">Toronto 2890</label>
+      </li>
+      <li>
+        <input type="checkbox" id="1227" name="1227" value="1227" />
+        <label for="1227">Cleveland 1227</label>
+      </li>
+      <li>
+        <input type="checkbox" id="1267" name="1267" value="1267" />
+        <label for="1267">Twin Cities 1267</label>
+      </li>
+      <li>
+        <input type="checkbox" id="2" name="2" value="2" />
+        <label for="2">Montreal 2</label>
+      </li>
+      <li>
+        <input type="checkbox" id="31" name="31" value="31" />
+        <label for="31">Biddeford 31</label>
+      </li>
+      <li>
+        <input type="checkbox" id="838" name="838" value="838" />
+        <label for="838">CT 838</label>
+      </li>
+    </ul>
+    <br />
+
+    <textarea type="text" class="form-control" hidden="true" id="cars-involved-summary" name="cars-involved-summary" readonly="readonly" cols="80" rows="12"></textarea>
+  </div>
+
+  <div class="form-group" id="weather-group">
+    <label class="mandatory" for="weather-conditions"><strong>What was the weather at the time of the incident?</strong></label>
+    <br />
+    <ul id="weather-conditions" name="weather-conditions">
+    {% for wc in site.weather_conditions %}
+      <li><input type="checkbox" id="{{ wc[0] }}" name="{{ wc[0] }}" value="{{ wc[0] }}" />
+      <label for="{{ wc[0] }}">{{ wc[1] }} {{ wc[0] }}</label></li>
+    {% endfor %}
+    </li>
+    <br />
+    <textarea type="text" class="form-control" hidden="true" id="weather-conditions-summary" name="weather-conditions-summary" readonly="readonly" cols="80" rows="12"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="location-of-incident"><strong>Detailed description of location of incident:</strong></label>
+    <br />
+    <textarea class="form-control" id="location-of-incident" name="location-of-incident" cols="80" rows="12"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="circumstances"><strong>Describe the circumstances as completely as possible, including the roles you played.</strong></label>
+    <br />
+    <textarea class="form-control" id="circumstances" name="circumstances" cols="80" rows="12"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="witnesses"><strong>Please list the names of those who witnessed the incident. If a witness is not a member of the museum, please also list their contact information. If there were no witnesses, please write "<span style="color:red;">no witnesses</span>".</strong></label>
+    <br />
+    <textarea class="form-control" id="witnesses" name="witnesses" cols="80" rows="12"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="contributing-factors"><strong>What were the contributing factors of the incident?</strong></label>
+    <br />
+    <textarea class="form-control" id="contributing-factors" name="contributing-factors" cols="80" rows="12"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="recommendations"><strong>What are your follow up recommendations:</strong></label>
+    <br />
+    <textarea class="form-control" id="recommendations" name="recommendations" cols="80" rows="12"></textarea>
+  </div>
+
+  <div class="form-group">
+    <input style="float:left; margin-right:10px;" type="checkbox" class="form-control" id="everything-is-true" name="everything-is-true" placeholder="" />
+    <label for="everything-is-true"><strong>By checking this box, I certify that everything I've written above is accurate and a complete account of the incident as I observed and experienced it.</strong></label>
+    <br />
+    
+  </div>
+
+  <div class="form-group">
+    <label><span style="color:red;">Click the Checkbox <strong>ABOVE</strong>, then click the <strong>submit</strong> button to submit the form</span></label>
+    <button name="submit-button" id="submit-button" type="submit" class="btn btn-primary" disabled="disabled">Submit</button>
+  </div>
+
+  <pre id="response"></pre>
+
+</form>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  console.log("Hello, Devon");
+
+  /*
+   * Test function that populates form
+   */
+  $('#devon').on("mousedown", function(){
+    $("#first-name").val("Alexander");
+    $("#last-name").val("Hamilton");
+    $("#name").val("Alexander Hamilton");
+    $("#phone").val("207-867-5309");
+    $("#email").val("devon+hamilton@hubner.org");
+    $("#date-report-written").val("2024-01-22T02:32:12.540Z");
+    $("#cars-involved-summary").val("303,1160");
+    $("#weather-conditions-summary").val("Sun");
+    $("#everything-is-true").val("on");
+    $("#date-of-incident").val("2024-01-21");
+    $("#time-of-incident").val("21:32");
+  });
+
+
+  /*
+   * Take list of car checkboxes and summarize
+   */
+  $('#cars-involved').on("change", function(){
+    var carsInvolved = [];
+    $("#cars-involved :input").each(function() {
+      if ($(this).is(":checked")) {
+        var car = $(this).val()
+        console.log("checked:",car);
+        carsInvolved.push(car);
+        var allCars = carsInvolved.join(",");
+        $("#cars-involved-summary").val(allCars);
+      }
+    });
+  });
+
+  /*
+   * Take list of weather checkboxes and summarize
+   */
+  $('#weather-conditions').on("change", function(){
+    var weatherConditions = [];
+    $("#weather-conditions :input").each(function() {
+      if ($(this).is(":checked")) {
+        var car = $(this).val()
+        console.log("checked:",car);
+        weatherConditions.push(car);
+        var allWeather = weatherConditions.join(",");
+        $("#weather-conditions-summary").val(allWeather);
+      }
+    });
+  });
+
+  /*
+   * If first responders were called, show the textarea
+   */
+  $('#were-first-responders-called').on("change", function(){
+    console.log("Were first responders called?",$(this).val());
+    var wereFirstRespondersCalled = $(this).val();
+    if (wereFirstRespondersCalled == "yes") {
+      console.log("First Responders were Called");
+      // $('#who-were-the-first-responders-group').css("display:block;");
+      $('#who-were-the-first-responders-group').show();
+    } else {
+      console.log("First Responders were NOT Called");
+      // $('#who-were-the-first-responders-group').css("display:none;");
+      $('#who-were-the-first-responders-group').hide();
+    }
+  });
+
+  /*
+   * Only allow the submit button if the checkbox is clicked.
+   */
+  $('#everything-is-true').on("change", function(){
+    $('#submit-button').attr('disabled', $('#everything-is-true:checked').length == 0);
+  });
+
+
+  /*
+   * Take the operator selected and populated the user data.
+   */
+  $('#operators').on("change", function(){
+    console.log("Select name:",$(this).val());
+    var operator = $(this).val();
+    var names = operator.split("|");
+    var firstname = names[0];
+    var lastname = names[1];
+    var email = names[2];
+    var phone = names[3];
+    var name = firstname+" "+lastname;
+    console.log("Firstname:",firstname);
+    console.log("Lastname:",lastname);
+    console.log("Phone:",phone);
+    console.log("eMail:",email);
+    $('#first-name').val(firstname);
+    $('#last-name').val(lastname);
+    $('#name').val(name);
+    $('#email').val(email);
+    $('#phone').val(phone);
+
+    var date = new Date();
+    var now = date.toISOString(); //"2011-12-19T15:28:46.493Z"
+    $('#date-report-written').val(now);
+  }); /* operators onChange */
+
+
+  /*
+   * Submit the Incident Report
+   */
+  $("#incident-report").submit(function(e){
+    e.preventDefault();
+    var form = this;
+
+    var foundFirstName = false;
+    var foundLastName = false;
+    var foundName = false;
+    var foundPhone = false;
+    var foundEmail = false;
+    var foundDateReportWritten = false;
+    var foundCarsInvolvedSummary = false;
+    var foundWeatherConditionsSummary = false;
+    var foundEverythingIsTrue = false;
+    var foundDateOfIncident = false;
+
+    var everythingIsTrue = $('#everything-is-true').val();
+    var submitButton = $('#submit-button').val();
+    console.log("everythingIsTrue:",everythingIsTrue);
+    console.log("submitButton....:",submitButton);
+
+    // Capture the form data
+    let data = {};
+
+    $('form#incident-report input, form#incident-report select, form#incident-report textarea').each(function(index){  
+        var input = $(this);
+        var inputType = input.attr('type');
+        var inputName = input.attr('name');
+        var inputValue = input.val();
+        var printInput = true;
+
+        if (inputType == "checkbox") {
+          if (input.prop("checked")) {
+            printInput = true;
+          } else {
+            printInput = false
+          }
+        } // if checkbox
+
+        if (String(inputType) == "undefined") {
+          printInput = false;
+        } // if inputType is undefined, then it is a textarea that has no value
+
+        if (inputValue == "") {
+          printInput = false;
+        } // if inputValue is empty
+
+        if (printInput == true) {
+          console.log('Type: ' + inputType + ' Name: ' + inputName + ' Value: ' + inputValue);
+          data[inputName.replace("-summary", "")] = inputValue;
+          if (inputName == "first-name") { foundFirstName = true; }
+          if (inputName == "last-name") { foundLastName = true; }
+          if (inputName == "name") { foundName = true; }
+          if (inputName == "phone") { foundPhone = true; }
+          if (inputName == "email") { foundEmail = true; }
+          if (inputName == "date-report-written") { foundDateReportWritten = true; }
+          if (inputName == "cars-involved-summary") { foundCarsInvolvedSummary = true; }
+          if (inputName == "weather-conditions-summary") { foundWeatherConditionsSummary = true; }
+          if (inputName == "everything-is-true") { foundEverythingIsTrue = true; }
+          if (inputName == "date-of-incident") { foundDateOfIncident = true; }
+        } // if printInput
+
+      }); /* form each function */
+
+
+      if ((foundFirstName == false) ||
+          (foundLastName == false) ||
+          (foundName == false) ||
+          (foundPhone == false) ||
+          (foundEmail == false) ||
+          (foundDateReportWritten == false) ||
+          (foundCarsInvolvedSummary == false) ||
+          (foundWeatherConditionsSummary == false) ||
+          (foundEverythingIsTrue == false) ||
+          (foundDateOfIncident == false)) {
+
+        console.log("MISSING INPUT FIELDS");
+        $('#response').html("Missing Input Fields. Please complete the form before submitting!");
+        $('.mandatory').css("color", "red");
+
+      } else {
+        console.log("All required inputs found. Submitting form.");
+        $('#response').html("All required inputs found. Submitting form.");
+        $('.mandatory').css("color", "black");
+        console.log('Form Data: ', JSON.stringify(data));
+
+        /* ******************************** */
+        // Create the AJAX request
+        const formURL = 'https://y9lpwjzcya.execute-api.us-east-1.amazonaws.com/prod/reportrecord';
+        var xhr = new XMLHttpRequest();
+        xhr.open(form.method, formURL, true);
+        xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+        // Send the collected data as JSON
+        xhr.send(JSON.stringify(data));
+
+        xhr.onloadend = response => {
+          if ((response.target.status > 199) && (response.target.status < 300)) {
+            form.reset();
+            $("#response").html("<strong>Incident Report Submitted</strong><p />Thank you for submitting your incident report.<br />Please look for a copy in your eMail.");
+            console.log("Response:",response.target.status,response.target.response);
+            //console.log(JSON.parse(response.target.response).message);
+          } else {
+            $("#response").html('<strong>Error!</strong><p />Unable to submit form..');
+            console.log("ERROR Response:",response.target.status,response.target.response);
+            //console.error(JSON.parse(response.target.response).message);
+          }
+        } /* xhr.onloadend */
+        /* ******************************** */
+
+
+      } // if all elements found
+
+  });
+
+}); /* document ready */
+</script>
+
+
+
+
+
+
+<input type="button" name="devon" id="devon" value="Devon" />
+
+
