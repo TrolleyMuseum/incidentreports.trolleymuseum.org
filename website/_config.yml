@@ -7,6 +7,64 @@ url: ""
 theme: minima
 
 
+fleet_cars:
+  - name: "CT 1160"
+    short_name: "1160"
+  - name: "CT 303"
+    short_name: "303"
+  - name: "Nashua 38"
+    short_name: "38"
+  - name: "Boston 4387"
+    short_name: "4387"
+  - name: "Boston 5821"
+    short_name: "5821"
+  - name: "WV 639"
+    short_name: "639"
+  - name: "City Of Manchester"
+    short_name: "CityOfManchester"
+
+non_fleet_cars:
+  - name: "Cleveland 1227"
+    short_name: 1227
+  - name: "Twin Cities 1267"
+    short_name: 1267
+  - name: "Montreal 2"
+    short_name: 2
+  - name: "Toronto 2890"
+    short_name: 2890
+  - name: "Locomotive 300"
+    short_name: 300
+  - name: "Biddeford 31"
+    short_name: 31
+  - name: "Line Car 4"
+    short_name: 4
+  - name: "Snow Plow 5106"
+    short_name: 5106
+  - name: "CT 838"
+    short_name: 838
+
+other_cars:
+  - name: "Bobcat"
+    short_name: bobcat
+  - name: "Parts Warehouse Propane Forklift"
+    short_name: propaneforklift
+  - name: "Parts Warehouse Electric Forklift"
+    short_name: electricforklift
+
+incident_types:
+  - "derailment"
+  - "dewire"
+  - "fell off the stool"
+  - "loading passenger"
+  - "person under car with pole still up"
+  - "pole rope swinging around"
+  - "rail bikes"
+  - "switch incident"
+  - "trip and fall"
+  - "trucks went in two different directions"
+  - "unloading passenger"
+  - "work crew"
+
 weather_conditions:
   "Sun": "☀️"
   "Cloud": "☁️"
@@ -27,6 +85,40 @@ weather_conditions:
   "New Moon": "🌑"
   "Wind": "🌬️"
   "Fallen Leaves": "🍂"
+
+staff:
+  - lastname: Katie
+    firstname: Orlando
+    email: director@trolleymuseum.org
+    phone: 
+  - lastname: Steve
+    firstname: Berg
+    email: operations@trolleymuseum.org
+    phone: 
+  - lastname: Dave
+    firstname: Rogers
+    email: restoration@trolleymuseum.org
+    phone: 
+  - lastname: Brian
+    firstname: Tenaglia
+    email: fleet@trolleymuseum.org
+    phone: 
+
+
+other_members:
+  - lastname: Chuck
+    firstname: Griffith
+    email: 
+    phone: 
+  - lastname: Peter
+    firstname: Wilson
+    email: 
+    phone: 
+  - lastname: James
+    firstname: Van Bokkelen
+    email: 
+    phone: 
+
 
 operators:
   - lastname: Alexander
@@ -368,3 +460,83 @@ operators:
     firstname: Rick
     email: jrwolf@roadrunner.com
     phone: 207-967-3606
+
+
+track_locations:
+  - name: "Talbott Park"
+    code: "talbott-park"
+  - name: "Gregoire's Crossing"
+    code: "gregoires-crossing"
+  - name: "Meserve's Crossing"
+    code: "meserves-crossing"
+  - name: "Yard Limit Sign"
+    code: "yard-limit-sign"
+  - name: "Seward Switch"
+    code: "seward-switch"
+  - name: "Walker Junction"
+    code: "walker-junction"
+  - name: "Farview Interior"
+    code: "farview-interior"
+  - name: "Farview Yard"
+    code: "farview-yard"
+  - name: "Central Interior"
+    code: "central-interior"
+  - name: "Central Yard"
+    code: "central-yard"
+  - name: "Highwood Interior"
+    code: "highwood-interior"
+  - name: "Highwood Yard"
+    code: "highwood-yard"
+  - name: "Riverside Interior"
+    code: "riverside-interior"
+  - name: "Riverside Yard"
+    code: "riverside-yard"
+  - name: "Riverside Crossing"
+    code: "riverside-crossing"
+  - name: "SOAC Track"
+    code: "soac-track"
+  - name: "Butler Grove Lead"
+    code: "butler-grove-lead"
+  - name: "South Boston Interior"
+    code: "south-boston-interior"
+  - name: "South Boston Yard"
+    code: "south-boston-yard"
+  - name: "Shop 2 Interior"
+    code: "shop-2-interior"
+  - name: "Shop 2 Yard"
+    code: "shop-2-yard"
+  - name: "Shop 2 Lead"
+    code: "shop-2-lead"
+  - name: "Shop 2 Derail"
+    code: "shop-2-derail"
+  - name: "McKay Crossing"
+    code: "mckay-crossing"
+  - name: "Doherty Switch"
+    code: "doherty-switch"
+  - name: "Morrison Hill Station"
+    code: "morrison-hill-station"
+  - name: "North Loop Switch"
+    code: "north-loop-switch"
+  - name: "Arundel Station"
+    code: "arundel-station"
+  - name: "South Loop (Double-Slip) Switch"
+    code: "south-loop-(double-slip)-switch"
+  - name: "Visitor's Center"
+    code: "visitors-center"
+  - name: "B17 Dwarf Signal"
+    code: "b17-dwarf-signal"
+  - name: "Shuttle Position"
+    code: "shuttle-position"
+  - name: "Well Switch"
+    code: "well-switch"
+  - name: "Shop 1 Interior"
+    code: "shop-1-interior"
+  - name: "Shop 1 Yard"
+    code: "shop-1-yard"
+  - name: "Shop 1 Lead"
+    code: "shop-1-lead"
+  - name: "Shop 1 Derail"
+    code: "shop-1-derail"
+  - name: "Display Track"
+    code: "display-track"
+

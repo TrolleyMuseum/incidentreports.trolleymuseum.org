@@ -6,6 +6,81 @@ permalink: /incidentreport/
 
 <style type="text/css">
 
+  .map-latlong {
+    width: 45%;
+    border: 0.5px #ffffff solid !important;
+    padding: 20px;
+    font-size: 1em;
+    outline: none;
+    margin: 5px;
+    background: #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    -webkit-transition: all 0.5s ;
+    -moz-transition: all 0.5s ;
+    -ms-transition: all 0.5s ;
+    -o-transition: all 0.5s ;
+    transition: all 0.5s ;
+    color: #666666;
+  }
+
+  #map {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+  }
+
+  #witnesses {
+    background-color:#fff89d;
+  }
+  #witness-operators-group,
+  #non-member-witnesses,
+  #witness-staff-group,
+  #witness-other-group {
+    background-color: #fffcd9;
+  }
+  #non-member-witnesses textarea {
+    background-color:#ffffff;
+  }
+
+  #witnesses,
+  #witness-operators-group,
+  #non-member-witnesses,
+  #witness-staff-group,
+  #witness-other-group {
+    border:1px #cccccc solid;
+    margin:5px;
+    padding:5px;
+  }
+
+  div#fleet-cars-involved-group,
+  div#nonfleet-cars-involved-group,
+  div#other-cars-involved-group {
+    float:left;
+    margin:5px;
+    padding:5px;
+    border:1px #ffffff solid;
+  }
+
+  div#fleet-cars-involved-group {
+    background-color:#dfe6e1;
+    width:225px;
+  }
+  div#nonfleet-cars-involved-group {
+    background-color:#e6e3df;
+    width:200px;
+  }
+  div#other-cars-involved-group {
+    background-color:#d9deec;
+    width:200px;
+  }
+
+  #cars-involved {
+    border:1px darkGreen solid;
+    background-color:#b2e5c1;
+  }
+
   input#devon {
     width:100px;
     height:50px;
@@ -26,6 +101,7 @@ permalink: /incidentreport/
     padding:5px;
     margin:5px;
   }
+
   #were-first-responders-called-group {
     border:1px red solid;
   }
@@ -33,6 +109,15 @@ permalink: /incidentreport/
     border:1px red solid;
     background-color:salmon;
   }
+
+  #was-the-car-damaged-group {
+    border:1px red solid;
+  }
+  #how-was-the-car-damaged-group {
+    border:1px red solid;
+    background-color:salmon;
+  }
+
   #operators-group {
     border:1px blue solid;
     background-color:lightBlue;
@@ -41,8 +126,8 @@ permalink: /incidentreport/
     width:50px;
     height:50px;
     border:4px darkBlue solid !important;
-    style="float:left;
-    margin-right:10px;"
+    /* style="float:left; */
+    /* margin-right:10px;" */
   }
 
   button#submit-button {
@@ -78,16 +163,13 @@ permalink: /incidentreport/
     color:#333333;
   }
 
-  #cars-involved {
-    border:1px darkGreen solid;
-    background-color:lightGreen;
-  }
+
 
   #weather-group {
     border:1px lightBlue solid;
   }
 
-  #fleet-cars-involved-label, #nonfleet-cars-involved-label {
+  #fleet-cars-involved-label, #nonfleet-cars-involved-label, #other-cars-involved-label {
     font-weight: bold;
   }
 
@@ -148,6 +230,19 @@ permalink: /incidentreport/
     <input type="time" data-date-inline-picker="true" class="form-control" id="time-of-incident" name="time-of-incident" placeholder="" />
   </div>
 
+
+  <div class="form-group" id="incident-type-group">
+    <label style="float:left;margin:10px;" for="incident-type"><strong>Incident Type</strong></label>
+    <select class="form-control" style="float:left;margin:10px;" id="incident-type" name="incident-type">
+      <option selected value=""></option>
+      {% for incident_type in site.incident_types %}
+        <option value="{{ incident_type }}">{{ incident_type }}</option>
+      {% endfor %}
+    </select>
+    <label for="incident-type" style="color:darkBlue; font-size:10pt;"><em>If your unique Incident Type is missing, contact <a href="mailto:safety@trolleymuseum.org">safety@trolleymuseum.org</a></em></label>
+  </div>
+
+
   <div class="form-group" id="were-first-responders-called-group">
     <label for="were-first-responders-called"><strong>Were First Responders Called?</strong></label>
     <select id="were-first-responders-called" name="were-first-responders-called">
@@ -165,84 +260,146 @@ permalink: /incidentreport/
   </div>
 
   <div class="form-group" id="cars-involved">
-    <label id="fleet-cars-involved-label" for="fleet-cars-involved">Fleet Cars Involved:</label>
-    <br />
-    <ul id="fleet-cars-involved" name="fleet-cars-involved">
-      <li>
-        <input type="checkbox" id="1160" name="1160" value="1160" />
-        <label for="1160">CT 1160</label>
-      </li>
-      <li>
-        <input type="checkbox" id="303" name="303" value="303" />
-        <label for="303">CT 303</label>
-      </li>
-      <li>
-        <input type="checkbox" id="38" name="38" value="38" />
-        <label for="38">Nashua 38</label>
-      </li>
-      <li>
-        <input type="checkbox" id="4387" name="4387" value="4387" />
-        <label for="4387">Boston 4387</label>
-      </li>
-      <li>
-        <input type="checkbox" id="5821" name="5821" value="5821" />
-        <label for="5821">Boston 5821</label>
-      </li>
-      <li>
-        <input type="checkbox" id="639" name="639" value="639" />
-        <label for="639">WV 639</label>
-      </li>
-      <li>
-        <input type="checkbox" id="CityOfManchester" name="CityOfManchester" value="CityOfManchester" />
-        <label for="CityOfManchester">City Of Manchester</label>
-      </li>
-    </ul>
-    <br />
+    <h4>Cars Involved</h4>
+    <div id="fleet-cars-involved-group">
+      <label id="fleet-cars-involved-label" for="fleet-cars-involved">Fleet Cars Involved:</label>
+      <br />
+      <ul id="fleet-cars-involved" name="fleet-cars-involved">
+        {%- for car in site.fleet_cars -%}
+        <li>
+          <input type="checkbox" id="{{ car['short_name'] }}" name="{{ car['short_name'] }}" value="{{ car['short_name'] }}" />
+          <label for="{{ car['short_name'] }}">{{ car['name'] }}</label>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </div>
 
-    <label id="nonfleet-cars-involved-label" for="nonfleet-cars-involved">Non-Fleet Cars Involved:</label>
-    <br />
-    <ul id="nonfleet-cars-involved" name="nonfleet-cars-involved">
-      <li>
-        <input type="checkbox" id="4" name="4" value="4" />
-        <label for="4">Line Car 4</label>
-      </li>
-      <li>
-        <input type="checkbox" id="5106" name="5106" value="5106" />
-        <label for="5106">Snow Plow 5106</label>
-      </li>
-      <li>
-        <input type="checkbox" id="300" name="300" value="300" />
-        <label for="300">Locomotive 300</label>
-      </li>
-      <li>
-        <input type="checkbox" id="2890" name="2890" value="2890" />
-        <label for="2890">Toronto 2890</label>
-      </li>
-      <li>
-        <input type="checkbox" id="1227" name="1227" value="1227" />
-        <label for="1227">Cleveland 1227</label>
-      </li>
-      <li>
-        <input type="checkbox" id="1267" name="1267" value="1267" />
-        <label for="1267">Twin Cities 1267</label>
-      </li>
-      <li>
-        <input type="checkbox" id="2" name="2" value="2" />
-        <label for="2">Montreal 2</label>
-      </li>
-      <li>
-        <input type="checkbox" id="31" name="31" value="31" />
-        <label for="31">Biddeford 31</label>
-      </li>
-      <li>
-        <input type="checkbox" id="838" name="838" value="838" />
-        <label for="838">CT 838</label>
-      </li>
-    </ul>
+    <div id="nonfleet-cars-involved-group">
+      <label id="nonfleet-cars-involved-label" for="nonfleet-cars-involved">Non-Fleet Cars Involved:</label>
+      <br />
+      <ul id="nonfleet-cars-involved" name="nonfleet-cars-involved">
+        {%- for car in site.non_fleet_cars -%}
+        <li>
+          <input type="checkbox" id="{{ car['short_name'] }}" name="{{ car['short_name'] }}" value="{{ car['short_name'] }}" />
+          <label for="{{ car['short_name'] }}">{{ car['name'] }}</label>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div id="other-cars-involved-group">
+      <label id="other-cars-involved-label" for="other-cars-involved">Other Cars Involved:</label>
+      <br />
+      <ul id="other-cars-involved" name="other-cars-involved">
+        {%- for car in site.other_cars -%}
+        <li>
+          <input type="checkbox" id="{{ car['short_name'] }}" name="{{ car['short_name'] }}" value="{{ car['short_name'] }}" />
+          <label for="{{ car['short_name'] }}">{{ car['name'] }}</label>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <p style="clear:both" />
     <br />
 
     <textarea type="text" class="form-control" hidden="true" id="cars-involved-summary" name="cars-involved-summary" readonly="readonly" cols="80" rows="12"></textarea>
   </div>
+
+  <div class="form-group" id="was-the-car-damaged-group">
+    <label for="was-the-car-damaged"><strong>Was the car damaged?</strong></label>
+    <select id="was-the-car-damaged" name="was-the-car-damaged">
+      <option selected value="no">no</option>
+      <option value="yes">yes</option>
+    </select>
+
+    <div class="form-group" id="how-was-the-car-damaged-group" style="display:none;">
+      <label for="was-the-shop-notified"><strong>Was the shop notified?</strong></label>
+      <select id="was-the-shop-notified" name="was-the-shop-notified">
+        <option selected value="no">no</option>
+        <option value="yes">yes</option>
+      </select>
+
+
+
+<style type="text/css">
+  #trolley-damage {
+    background: url("/trolley_damage.svg") no-repeat;
+    background-size: 100%;
+    height:500px;
+    width: 690px; /* 926px; */
+    border:0.5px #dddddd solid;
+    background-color:#ffcfcf;
+    position: relative;
+  }
+  .trolley-damage {
+     width:25px;
+     height:25px;
+     position: absolute;
+     cursor: pointer;
+  }
+
+  #damage-trucks-1 { left:140px; top:415px; }
+  #damage-trucks-2 { left:220px; top:415px; }
+  #damage-trucks-3 { left:415px; top:415px; }
+  #damage-trucks-4 { left:500px; top:415px; }
+
+  #damage-pole-1        { left:110px; top:34px; }
+  #damage-pole-2        { left:520px; top:40px; }
+  #damage-rope-1        { left:15px;  top:200px; }
+  #damage-rope-2        { left:640px; top:230px; }
+  #damage-catcher-1     { left:35px;  top:320px; }
+  #damage-catcher-2     { left:605px; top:320px; }
+  #damage-controller-1  { left:80px; top:270px; }
+  #damage-controller-2  { left:555px; top:270px; }
+  #damage-harp-1        { left:200px; top:90px; }
+  #damage-harp-2        { left:420px; top:90px; }
+</style>
+
+      <p />
+      <label for="where-on-the-car-was-it-damaged"><strong>Where on the car was it damaged?</strong><br /><small><em>Check the box where the damage has occurred</em></small></label>
+      <br />
+
+      <div id="trolley-damage">
+        <input type="checkbox" id="damage-trucks-1" class="trolley-damage" name="damage-trucks-1" />
+        <input type="checkbox" id="damage-trucks-2" class="trolley-damage" name="damage-trucks-2" />
+        <input type="checkbox" id="damage-trucks-3" class="trolley-damage" name="damage-trucks-3" />
+        <input type="checkbox" id="damage-trucks-4" class="trolley-damage" name="damage-trucks-4" />
+
+        <input type="checkbox" id="damage-pole-1" class="trolley-damage" name="damage-pole-1" />
+        <input type="checkbox" id="damage-pole-2" class="trolley-damage" name="damage-pole-2" />
+
+        <input type="checkbox" id="damage-rope-1" class="trolley-damage" name="damage-rope-1" />
+        <input type="checkbox" id="damage-rope-2" class="trolley-damage" name="damage-rope-2" />
+
+        <input type="checkbox" id="damage-catcher-1" class="trolley-damage" name="damage-catcher-1" />
+        <input type="checkbox" id="damage-catcher-2" class="trolley-damage" name="damage-catcher-2" />
+
+        <input type="checkbox" id="damage-pole-1" class="trolley-damage" name="damage-pole-1" />
+        <input type="checkbox" id="damage-pole-2" class="trolley-damage" name="damage-pole-2" />
+
+        <input type="checkbox" id="damage-controller-1" class="trolley-damage" name="damage-controller-1" />
+        <input type="checkbox" id="damage-controller-2" class="trolley-damage" name="damage-controller-2" />
+
+        <input type="checkbox" id="damage-harp-1" class="trolley-damage" name="damage-harp-1" />
+        <input type="checkbox" id="damage-harp-2" class="trolley-damage" name="damage-harp-2" />
+
+      </div>
+
+
+
+
+
+
+
+      <p />
+      <label for="how-was-the-car-damaged"><strong>How was the car damaged?</strong></label>
+      <br />
+      <textarea class="form-control" id="how-was-the-car-damaged" name="how-was-the-car-damaged" cols="80" rows="12"></textarea>
+    </div>
+
+  </div>
+
+
 
   <div class="form-group" id="weather-group">
     <label class="mandatory" for="weather-conditions"><strong>What was the weather at the time of the incident?</strong></label>
@@ -257,11 +414,112 @@ permalink: /incidentreport/
     <textarea type="text" class="form-control" hidden="true" id="weather-conditions-summary" name="weather-conditions-summary" readonly="readonly" cols="80" rows="12"></textarea>
   </div>
 
-  <div class="form-group">
-    <label for="location-of-incident"><strong>Detailed description of location of incident:</strong></label>
-    <br />
-    <textarea class="form-control" id="location-of-incident" name="location-of-incident" cols="80" rows="12"></textarea>
-  </div>
+
+  <!-- INCIDENT LOCATION -->
+
+
+<style>
+  #track-map {
+    background: url("/track_map.svg") no-repeat;
+    background-size: 100%;
+    height:1000px;
+    width: 500px; /* 926px; */
+    border:0.5px #dddddd solid;
+    background-color:#efefef;
+    position: relative;
+  }
+  #incident-location-group {
+    background-color:#d7edee;
+    border:1px darkCyan solid;
+  }
+  #track-map-group {
+    position:relative
+  }
+  #track-map,
+  #track-map-names {
+    float:left;
+  }
+  #track-map-names {
+    width:210px;
+  }
+</style>
+
+  <div id="incident-location-group">
+    <h4>Incident Location</h4>
+    <div class="form-group">
+      <label><strong>Select the name of the Track Location where the incident occurred.</strong></label>
+      <div id="track-map-group">
+        <div id="track-map"></div>
+        <div id="track-map-names">
+          <!--
+          <select id="track-location" name="track-location">
+            <option></option>
+            {%- for track_location in site.track_locations -%}
+              <option value="{{ track_location["code"] }}">{{ track_location["name"] }}</option>
+            {%- endfor -%}
+          </select>
+          -->
+
+            {% for track_location in site.track_locations %}
+            <div id="track-location-{{ track_location['code'] }}-row">
+              <input type="radio" id="track-location-{{ track_location['code'] }}" value="{{ track_location['code'] }}" name="track-location" />
+              <label for="track-location-{{ track_location['code'] }}">{{ track_location["name"] }}</label>
+            </div>
+            {% endfor %}
+        </div><!-- track-map-names -->
+      </div><!-- track-map-group -->
+      <p style="clear:both;">&nbsp;</p>
+    
+      <div id="exact-location-group">
+        <label><strong>Place a pin where the exact location of the incident occurred</strong></label>
+        <div id="map"></div>
+        <div id="latlong">
+          <input class="map-latlong" type="text" id="latitude"  placeholder="latitude" readonly />
+          <input class="map-latlong" type="text" id="longitude" placeholder="longitude" readonly />
+        </div><!-- latlong -->
+      </div><!-- exact-location-group -->
+      <p style="clear:both;">&nbsp;</p>
+
+<!-- leaflet for the map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+
+<script>
+
+let mapOptions = {
+  center:[43.41028, -70.49213],
+  zoom:17
+}
+
+let map = new L.map('map' , mapOptions);
+
+let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+map.addLayer(layer);
+
+
+let marker = null;
+map.on('click', (event)=> {
+
+  if(marker !== null){
+    map.removeLayer(marker);
+  }
+
+  marker = L.marker([event.latlng.lat , event.latlng.lng]).addTo(map);
+
+  document.getElementById('latitude').value = event.latlng.lat;
+  document.getElementById('longitude').value = event.latlng.lng;
+    
+})
+</script>
+
+
+      <label for="location-of-incident"><strong>Detailed description of location of incident:</strong></label>
+      <br />
+      <textarea class="form-control" id="location-of-incident" name="location-of-incident" cols="80" rows="12"></textarea>
+
+    </div>
+
+  </div><!-- incident location group -->
 
   <div class="form-group">
     <label for="circumstances"><strong>Describe the circumstances as completely as possible, including the roles you played.</strong></label>
@@ -269,11 +527,48 @@ permalink: /incidentreport/
     <textarea class="form-control" id="circumstances" name="circumstances" cols="80" rows="12"></textarea>
   </div>
 
-  <div class="form-group">
-    <label for="witnesses"><strong>Please list the names of those who witnessed the incident. If a witness is not a member of the museum, please also list their contact information. If there were no witnesses, please write "<span style="color:red;">no witnesses</span>".</strong></label>
-    <br />
-    <textarea class="form-control" id="witnesses" name="witnesses" cols="80" rows="12"></textarea>
+
+
+  <!-- WITNESSES -->
+
+  <div class="form-group" id="witnesses">
+    <h4>Witnesses</h4>
+    <label><em>Click the (➕) plus sign to add a person</em></label>
+    <div id="witness-operators-group">
+      <label id="witness-operators-label" for="witness-operators">Operators:</label>
+      <input type="button" id="add-witness-operator" name="add-witness-operator" value="➕"
+      />
+      <p style="clear:both;" />
+      <div id="witness-operators"></div>
+    </div>
+
+    <div id="witness-staff-group">
+      <label id="witness-staff-label" for="witness-staff">Staff:</label>
+      <input type="button" id="add-witness-staff" name="add-witness-staff" value="➕"
+      />
+      <p style="clear:both;" />
+      <div id="witness-staff"></div>
+    </div>
+
+    <div id="witness-other-group">
+      <label id="witness-other-label" for="witness-other">Other Members:</label>
+      <input type="button" id="add-witness-other" name="add-witness-other" value="➕"
+      />
+      <p style="clear:both;" />
+      <div id="witness-other"></div>
+    </div>
+
+    <div class="form-group" id="non-member-witnesses">
+      <label for="non-member-witnesses"><strong>Other/Non-Member witnesses of the incident. Please include their contact information.</strong></label>
+      <br />
+      <textarea class="form-control" id="non-member-witnesses" name="non-member-witnesses" cols="80" rows="12"></textarea>
+    </div>
   </div>
+
+
+
+
+
 
   <div class="form-group">
     <label for="contributing-factors"><strong>What were the contributing factors of the incident?</strong></label>
@@ -307,6 +602,7 @@ permalink: /incidentreport/
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -370,14 +666,30 @@ $(document).ready(function() {
     var wereFirstRespondersCalled = $(this).val();
     if (wereFirstRespondersCalled == "yes") {
       console.log("First Responders were Called");
-      // $('#who-were-the-first-responders-group').css("display:block;");
       $('#who-were-the-first-responders-group').show();
     } else {
       console.log("First Responders were NOT Called");
-      // $('#who-were-the-first-responders-group').css("display:none;");
       $('#who-were-the-first-responders-group').hide();
     }
   });
+
+  /*
+   * If the car was damaged, show the textarea
+   */
+  $('#was-the-car-damaged').on("change", function(){
+    console.log("Was the car damaged?",$(this).val());
+    var wasTheCarDamagedCalled = $(this).val();
+    if (wasTheCarDamagedCalled == "yes") {
+      console.log("The car was damaged");
+      $('#how-was-the-car-damaged-group').show();
+    } else {
+      console.log("The car was NOT damaged");
+      $('#how-was-the-car-damaged-group').hide();
+    }
+  });
+
+
+
 
   /*
    * Only allow the submit button if the checkbox is clicked.
@@ -413,6 +725,52 @@ $(document).ready(function() {
     var now = date.toISOString(); //"2011-12-19T15:28:46.493Z"
     $('#date-report-written').val(now);
   }); /* operators onChange */
+
+
+  /*
+   * Add a Witness Operator
+   */
+  var witnessOperators = 0;
+  $('#add-witness-operator').on("mousedown", function(){
+    witnessOperators = witnessOperators + 1;
+    $("#witness-operators").append(`
+      <select class="form-control" class="witness-operator-select" id="witness-operator-`+witnessOperators+`" name="witness-operator-`+witnessOperators+`">
+      <option selected value=""></option>
+      {% for operator in site.operators %}
+        <option value="{{ operator["lastname"] }}, {{ operator["firstname"] }}">{{ operator["lastname"] }}, {{ operator["firstname"] }}</option>
+      {% endfor %}
+      </select>`);
+  });
+
+  /*
+   * Add a Witness Other
+   */
+  var witnessOther = 0;
+  $('#add-witness-other').on("mousedown", function(){
+    witnessOther = witnessOther + 1;
+    $("#witness-other").append(`
+      <select class="form-control" class="witness-other-select" id="witness-other-`+witnessOther+`" name="witness-other-`+witnessOther+`">
+      <option selected value=""></option>
+      {% for other in site.other_members %}
+        <option value="{{ other["lastname"] }}, {{ other["firstname"] }}">{{ other["lastname"] }}, {{ other["firstname"] }}</option>
+      {% endfor %}
+      </select>`);
+  });
+
+  /*
+   * Add a Witness Other
+   */
+  var witnessOther = 0;
+  $('#add-witness-staff').on("mousedown", function(){
+    witnessOther = witnessOther + 1;
+    $("#witness-staff").append(`
+      <select class="form-control" class="witness-staff-select" id="witness-staff-`+witnessOther+`" name="witness-staff-`+witnessOther+`">
+      <option selected value=""></option>
+      {% for staff in site.staff %}
+        <option value="{{ staff["lastname"] }}, {{ staff["firstname"] }}">{{ staff["lastname"] }}, {{ staff["firstname"] }}</option>
+      {% endfor %}
+      </select>`);
+  });
 
 
   /*
