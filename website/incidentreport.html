@@ -419,6 +419,38 @@ permalink: /incidentreport/
 
 
 <style>
+  #direction-of-travel {
+    background: url("/direction_of_travel.svg") no-repeat;
+    background-size: 100%;
+    height:200px;
+    width: 200px; /* 926px; */
+    position: relative;
+  }
+  #direction-of-travel-group {
+    border:0.5px #dddddd solid;
+    background-color:#efefef;
+    padding:5px;
+    /* margin-left:25%; */
+    /* margin-right:25%; */
+  }
+
+  .compass-direction {
+     width:25px;
+     height:25px;
+     position: absolute;
+     cursor: pointer;
+  }
+
+  #compass-direction-n  { left:90px; top:30px; }
+  #compass-direction-e  { left:140px; top:75px; }
+  #compass-direction-s  { left:90px; top:120px; }
+  #compass-direction-w  { left:40px; top:75px; }
+  #compass-direction-nw { left:50px; top:40px; }
+  #compass-direction-ne { left:130px; top:40px; }
+  #compass-direction-se { left:130px; top:110px; }
+  #compass-direction-sw { left:49px; top:110px; }
+
+
   #track-map {
     background: url("/track_map.svg") no-repeat;
     background-size: 100%;
@@ -447,6 +479,21 @@ permalink: /incidentreport/
   <div id="incident-location-group">
     <h4>Incident Location</h4>
     <div class="form-group">
+      <label><strong>Select the direction that the vehicle was traveling.</strong></label>
+      <div id="direction-of-travel-group">
+        <div id="direction-of-travel">
+          <input type="radio" id="compass-direction-n" class="compass-direction" name="compass-direction" value="compass-direction-n" />
+          <input type="radio" id="compass-direction-s" class="compass-direction" name="compass-direction" value="compass-direction-s" />
+          <input type="radio" id="compass-direction-e" class="compass-direction" name="compass-direction" value="compass-direction-e" />
+          <input type="radio" id="compass-direction-w" class="compass-direction" name="compass-direction" value="compass-direction-w" />
+          <input type="radio" id="compass-direction-nw" class="compass-direction" name="compass-direction" value="compass-direction-nw" />
+          <input type="radio" id="compass-direction-se" class="compass-direction" name="compass-direction" value="compass-direction-se" />
+          <input type="radio" id="compass-direction-ne" class="compass-direction" name="compass-direction" value="compass-direction-ne" />
+          <input type="radio" id="compass-direction-sw" class="compass-direction" name="compass-direction" value="compass-direction-sw" />
+        </div>
+      </div>
+
+      <p />
       <label><strong>Select the name of the Track Location where the incident occurred.</strong></label>
       <div id="track-map-group">
         <div id="track-map"></div>

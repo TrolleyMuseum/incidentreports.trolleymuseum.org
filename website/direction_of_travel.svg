@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="114.72897mm"
+   height="102.25677mm"
+   viewBox="0 0 114.72897 102.25677"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
+   sodipodi:docname="direction_of_travel.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="197.42661"
+     inkscape:cy="223.16177"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1440"
+     inkscape:window-height="847"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-57.072045,-16.959009)">
+    <ellipse
+       style="fill:#ecebcd;fill-opacity:1;stroke:#706c24;stroke-width:2.13851;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:fill markers stroke"
+       id="path899"
+       cx="118.53529"
+       cy="69.624962"
+       rx="28.930748"
+       ry="28.930746" />
+    <rect
+       style="fill:#706c24;fill-opacity:1;stroke:none;stroke-width:3.31803;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect901"
+       width="2.1381562"
+       height="75.400574"
+       x="117.86586"
+       y="29.101814" />
+    <rect
+       style="fill:#706c24;fill-opacity:1;stroke:none;stroke-width:3.56741;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect903"
+       width="2.1381562"
+       height="87.160431"
+       x="68.940262"
+       y="-162.24788"
+       transform="rotate(90)" />
+    <rect
+       style="fill:#706c24;fill-opacity:1;stroke:none;stroke-width:3.56741;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect905"
+       width="2.1381562"
+       height="87.160431"
+       x="-19.493065"
+       y="-180.1228"
+       transform="rotate(128.22359)" />
+    <rect
+       style="fill:#706c24;fill-opacity:1;stroke:none;stroke-width:3.56741;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect909"
+       width="2.1381562"
+       height="87.160431"
+       x="129.41466"
+       y="-87.821785"
+       transform="rotate(49.268608)" />
+    <g
+       aria-label="S"
+       id="text917"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="m 117.62433,113.14947 q -1.38551,-0.74893 -1.98466,-1.6102 -0.59914,-0.86126 -0.59914,-2.097 0,-1.14211 0.52425,-1.98465 0.52425,-0.86127 1.42296,-1.31063 0.91744,-0.46808 2.097,-0.46808 1.47914,0 2.93954,0.67404 v 1.98466 q -1.51657,-0.5617 -2.67741,-0.5617 -0.78638,0 -1.23573,0.39319 -0.44936,0.39318 -0.44936,1.08594 0,0.58042 0.28085,0.95489 0.29957,0.37446 1.12339,0.82382 l 1.01105,0.54297 q 0.97361,0.52425 1.5353,1.0485 0.58042,0.52425 0.84255,1.17956 0.28085,0.63659 0.28085,1.55403 0,1.7787 -1.16084,2.8272 -1.14212,1.02977 -3.16422,1.02977 -0.87999,0 -1.75998,-0.20595 -0.87999,-0.20596 -1.47914,-0.54297 v -1.96594 q 0.69276,0.26213 1.55403,0.44936 0.87999,0.16851 1.49786,0.16851 0.89871,0 1.36679,-0.41191 0.46808,-0.43064 0.46808,-1.21701 0,-0.58042 -0.33702,-0.97361 -0.31829,-0.41191 -1.08594,-0.82382 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path982" />
+    </g>
+    <g
+       aria-label="N"
+       id="text913"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="m 116.66759,20.797265 v 9.136922 H 114.4957 V 16.959009 h 2.92082 l 3.91314,9.099476 v -9.099476 h 2.1719 v 12.975178 h -2.88338 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path966" />
+    </g>
+    <g
+       aria-label="W"
+       id="text921"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="m 65.591101,75.637276 -1.460409,-9.567555 -1.385517,9.567555 H 59.843079 L 57.072045,62.662098 h 2.639972 l 1.647641,10.316483 1.422963,-9.792233 h 2.845927 l 1.460409,9.623725 1.591472,-10.147975 h 2.583802 l -2.771034,12.975178 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path990" />
+    </g>
+    <g
+       aria-label="E"
+       id="text925"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="M 164.74237,76.171806 V 63.196629 h 7.05865 v 2.003382 h -4.4374 v 3.314007 h 3.55741 V 70.5174 h -3.55741 v 3.651024 h 4.4374 v 2.003382 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path974" />
+    </g>
+    <g
+       aria-label="SW"
+       transform="rotate(41.319529)"
+       id="text929"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="m 121.07636,26.983475 q -1.38552,-0.748928 -1.98466,-1.610195 -0.59914,-0.861267 -0.59914,-2.096999 0,-1.142115 0.52425,-1.984659 0.52425,-0.861267 1.42296,-1.310624 0.91744,-0.46808 2.097,-0.46808 1.47913,0 2.93954,0.674035 v 1.98466 q -1.51658,-0.561696 -2.67742,-0.561696 -0.78637,0 -1.23573,0.393187 -0.44935,0.393187 -0.44935,1.085945 0,0.58042 0.28084,0.954884 0.29957,0.374464 1.1234,0.82382 l 1.01105,0.542973 q 0.9736,0.52425 1.5353,1.048499 0.58042,0.52425 0.84254,1.179562 0.28085,0.636589 0.28085,1.554026 0,1.778704 -1.16084,2.827203 -1.14211,1.029776 -3.16422,1.029776 -0.87999,0 -1.75998,-0.205955 -0.87999,-0.205956 -1.47913,-0.542973 v -1.965936 q 0.69276,0.262125 1.55403,0.449357 0.87999,0.168508 1.49785,0.168508 0.89872,0 1.3668,-0.41191 0.46808,-0.430634 0.46808,-1.217008 0,-0.580419 -0.33702,-0.973606 -0.3183,-0.411911 -1.08595,-0.823821 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path985" />
+      <path
+         d="m 135.61171,32.768944 -1.46041,-9.567555 -1.38552,9.567555 h -2.9021 l -2.77103,-12.975178 h 2.63997 l 1.64764,10.316483 1.42297,-9.792233 h 2.84592 l 1.46041,9.623725 1.59147,-10.147975 h 2.58381 l -2.77104,12.975178 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path987" />
+    </g>
+    <g
+       aria-label="SE"
+       transform="rotate(-51.45263)"
+       id="text933"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="m 13.697623,188.4038 q -1.385516,-0.74893 -1.984659,-1.61019 -0.599142,-0.86127 -0.599142,-2.097 0,-1.14212 0.52425,-1.98466 0.524249,-0.86127 1.422963,-1.31063 0.917436,-0.46808 2.096998,-0.46808 1.479133,0 2.939542,0.67404 v 1.98466 q -1.516579,-0.5617 -2.677417,-0.5617 -0.786375,0 -1.235731,0.39319 -0.449357,0.39319 -0.449357,1.08595 0,0.58041 0.280848,0.95488 0.299571,0.37446 1.123392,0.82382 l 1.011053,0.54297 q 0.973606,0.52425 1.535302,1.0485 0.580419,0.52425 0.842544,1.17956 0.280848,0.63659 0.280848,1.55403 0,1.7787 -1.160838,2.8272 -1.142116,1.02978 -3.164221,1.02978 -0.879991,0 -1.759981,-0.20596 -0.87999,-0.20595 -1.479133,-0.54297 v -1.96594 q 0.692759,0.26213 1.554026,0.44936 0.87999,0.16851 1.497856,0.16851 0.898713,0 1.366793,-0.41191 0.46808,-0.43063 0.46808,-1.21701 0,-0.58042 -0.337017,-0.97361 -0.318295,-0.41191 -1.085946,-0.82382 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path977" />
+      <path
+         d="m 20.74369,194.18927 v -12.97518 h 7.058646 v 2.00338 h -4.437398 v 3.31401 h 3.557408 v 2.00338 h -3.557408 v 3.65103 h 4.437398 v 2.00338 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path979" />
+    </g>
+    <g
+       aria-label="NE"
+       transform="rotate(46.152614)"
+       id="text941"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="m 128.48833,-91.477101 v 9.136922 h -2.17189 v -12.975178 h 2.92082 l 3.91314,9.099475 v -9.099475 h 2.1719 v 12.975178 h -2.88338 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path969" />
+      <path
+         d="m 137.87216,-82.340179 v -12.975178 h 7.05865 v 2.003382 h -4.4374 v 3.314007 h 3.55741 v 2.003382 h -3.55741 v 3.651024 h 4.4374 v 2.003383 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path971" />
+    </g>
+    <g
+       aria-label="NW"
+       transform="rotate(-48.922222)"
+       id="text937"
+       style="font-size:18.7232px;line-height:1.25;font-family:sans-serif;stroke-width:0.11702">
+      <path
+         d="m 14.58756,80.57291 v 9.136921 H 12.415669 V 76.734654 h 2.920819 l 3.913149,9.099475 v -9.099475 h 2.171891 v 12.975177 h -2.883373 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path961" />
+      <path
+         d="m 31.460674,89.709831 -1.46041,-9.567555 -1.385516,9.567555 H 25.712652 L 22.941618,76.734654 h 2.639971 l 1.647642,10.316483 1.422963,-9.792234 h 2.845926 l 1.46041,9.623725 1.591472,-10.147974 h 2.583802 L 34.36277,89.709831 Z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-family:'Amazon Ember Cd RC';-inkscape-font-specification:'Amazon Ember Cd RC Bold Condensed';fill:#808000;stroke-width:0.11702"
+         id="path963" />
+    </g>
+  </g>
+</svg>
